@@ -2,6 +2,7 @@ import { cn } from "@/utils/cn";
 import { Button, Listbox, ListboxItem } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { JSX } from "react";
 import { CiLogout } from "react-icons/ci";
@@ -56,6 +57,8 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
               textValue={item.label}
               aria-label={item.label}
               aria-describedby={item.label}
+              as={Link}
+              href={item.href}
             >
               <p className="text-small">{item.label}</p>
             </ListboxItem>
@@ -69,7 +72,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
           variant="light"
           className="flex justify-start rounded-lg px-2 py-1.5"
           size="lg"
-          onClick={() => signOut()}
+          onPress={() => signOut()}
         >
           <CiLogout />
           Logout
