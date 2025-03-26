@@ -40,7 +40,7 @@ const AddCategoryModal = (props: PropTypes) => {
   } = useAddCategoryModal();
 
   useEffect(() => {
-    if (isPendingMutateAddCategory) {
+    if (isSuccessMutateAddCategory) {
       onClose();
       refetchCategory();
     }
