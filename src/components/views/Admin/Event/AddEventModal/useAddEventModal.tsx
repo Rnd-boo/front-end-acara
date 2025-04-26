@@ -4,15 +4,12 @@ import useDebounce from "@/hooks/useDebounce";
 import useMediaHandling from "@/hooks/useMediaHandling";
 import categoryServices from "@/services/category.service";
 import eventServices from "@/services/event.service";
-import { ICategory } from "@/types/Category";
 import { IEvent, IEventForm } from "@/types/Event";
-import { cn } from "@/utils/cn";
 import { toDateStandard } from "@/utils/date";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getLocalTimeZone, now } from "@internationalized/date";
 import { DateValue } from "@nextui-org/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -30,17 +27,16 @@ const schema = yup.object().shape({
   region: yup.string().required("Please select region"),
   longitude: yup.string().required("Please select longitude coordinate"),
   latitude: yup.string().required("Please select latitude coordinate"),
-  banner: yup.mixed<FileList | string>().required("Please input benner"),
+  banner: yup.mixed<FileList | string>().required("Please input banner"),
 });
 
 const useAddEventModal = () => {
   const { setToaster } = useContext(ToasterContext);
-  const router = useRouter();
   const debounce = useDebounce();
   const {
     isPendingMutateUploadFile,
     isPendingMutateDeleteFile,
-    handelUploadFile,
+    handleUploadFile,
     handleDeleteFile,
   } = useMediaHandling();
 
@@ -66,7 +62,7 @@ const useAddEventModal = () => {
     files: FileList,
     onChange: (files: FileList | undefined) => void,
   ) => {
-    handelUploadFile(files, onChange, (fileUrl: string | undefined) => {
+    handleUploadFile(files, onChange, (fileUrl: string | undefined) => {
       if (fileUrl) {
         setValue("banner", fileUrl);
       }
@@ -89,7 +85,7 @@ const useAddEventModal = () => {
   const { data: dataCategory } = useQuery({
     queryKey: ["Categories"],
     queryFn: () => categoryServices.getCategories(),
-    enabled: router.isReady,
+    enabled: true,
   });
 
   const [searchRegency, setSearchRegency] = useState("");
@@ -136,10 +132,10 @@ const useAddEventModal = () => {
       isFeatured: Boolean(data.isFeatured),
       isOnline: Boolean(data.isOnline),
       isPublished: Boolean(data.isPublished),
-      startDate: toDateStandard(data.startDate),
-      endDate: toDateStandard(data.endDate),
+      startDate: data.startDate ? toDateStandard(data.startDate) : "",
+      endDate: data.endDate ? toDateStandard(data.endDate) : "",
       location: {
-        region: data.region,
+        region: `${data.region}`,
         coordinates: [Number(data.latitude), Number(data.longitude)],
       },
       banner: data.banner,

@@ -9,7 +9,7 @@ const useChangeUrl = () => {
 
   const currentLimit = router.query.limit;
   const currentPage = router.query.page;
-  const currentSearch = router.query.seacrh;
+  const currentSearch = router.query.search;
 
   const setUrl = () => {
     router.replace({

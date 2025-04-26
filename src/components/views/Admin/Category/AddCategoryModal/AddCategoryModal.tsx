@@ -32,7 +32,7 @@ const AddCategoryModal = (props: PropTypes) => {
     isSuccessMutateAddCategory,
 
     preview,
-    handelUploadIcon,
+    handleUploadIcon,
     isPendingMutateUploadFile,
     handleDeleteIcon,
     isPendingMutateDeleteFile,
@@ -103,7 +103,7 @@ const AddCategoryModal = (props: PropTypes) => {
                   <InputFile
                     {...field}
                     onDelete={() => handleDeleteIcon(onChange)}
-                    onUpload={(files) => handelUploadIcon(files, onChange)}
+                    onUpload={(files) => handleUploadIcon(files, onChange)}
                     isUploading={isPendingMutateUploadFile}
                     isDeleting={isPendingMutateDeleteFile}
                     isInvalid={errors.icon !== undefined}

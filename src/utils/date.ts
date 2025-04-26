@@ -19,12 +19,18 @@ const toDateStandard = (date: DateValue) => {
   const second = "second" in date ? date.second : 0;
 
   const result = `${year}-${month}-${day} ${standardTime(hour)}:${standardTime(minute)}:${standardTime(second)}`;
-
   return result;
 };
 
 const toInputDate = (date: string) => {
-  const formattedDate = parseAbsoluteToLocal(`${date.replace("", "T")}+07:00`);
+  // Ensure month and day are padded with leading zeros
+  const formattedDate = parseAbsoluteToLocal(
+    `${date
+      .replace(" ", "T")
+      .replace(/(\d{4})-(\d{1})-/g, "$1-0$2-")
+      .replace(/-(\d{1})T/g, "-0$1T")}+07:00`,
+  );
+  return formattedDate;
 };
 
 export { toDateStandard, toInputDate };

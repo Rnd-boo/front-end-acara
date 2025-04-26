@@ -51,7 +51,7 @@ const useMediaHandling = () => {
       },
     });
 
-  const handelUploadFile = (
+  const handleUploadFile = (
     files: FileList,
     onChange: (files: FileList | undefined) => void,
     callback: (fileUrl?: string) => void,
@@ -82,7 +82,7 @@ const useMediaHandling = () => {
     mutateDeleteFile,
     isPendingMutateDeleteFile,
 
-    handelUploadFile,
+    handleUploadFile,
     handleDeleteFile,
   };
 };

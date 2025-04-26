@@ -22,7 +22,7 @@ const useAddEventModal = () => {
     isPendingMutateDeleteFile,
 
     handleDeleteFile,
-    handelUploadFile,
+    handleUploadFile,
   } = useMediaHandling();
   const {
     control,
@@ -39,11 +39,11 @@ const useAddEventModal = () => {
   const preview = watch("icon");
   const fileUrl = getValues("icon");
 
-  const handelUploadIcon = (
+  const handleUploadIcon = (
     files: FileList,
     onChange: (files: FileList | undefined) => void,
   ) => {
-    handelUploadFile(files, onChange, (fileUrl: string | undefined) => {
+    handleUploadFile(files, onChange, (fileUrl: string | undefined) => {
       if (fileUrl) {
         setValue("icon", fileUrl);
       }
@@ -100,7 +100,7 @@ const useAddEventModal = () => {
     isSuccessMutateAddCategory,
 
     preview,
-    handelUploadIcon,
+    handleUploadIcon,
     isPendingMutateUploadFile,
     handleDeleteIcon,
     isPendingMutateDeleteFile,
