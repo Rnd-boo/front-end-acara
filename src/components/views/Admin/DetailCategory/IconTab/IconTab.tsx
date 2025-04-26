@@ -24,7 +24,7 @@ const IconTab = (props: PropTypes) => {
   const { currentIcon, onUpdate, isPendingUpdate, isSuccessUpdate } = props;
   const {
     handleDeleteIcon,
-    handelUploadIcon,
+    handleUploadIcon,
     isPendingMutateDeleteFile,
     isPendingMutateUploadFile,
 
@@ -71,7 +71,7 @@ const IconTab = (props: PropTypes) => {
               <InputFile
                 {...field}
                 onDelete={() => handleDeleteIcon(onChange)}
-                onUpload={(files) => handelUploadIcon(files, onChange)}
+                onUpload={(files) => handleUploadIcon(files, onChange)}
                 isUploading={isPendingMutateUploadFile}
                 isDeleting={isPendingMutateDeleteFile}
                 isInvalid={errorsUpdateIcon.icon !== undefined}
