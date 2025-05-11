@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   icon: yup.mixed<FileList | string>().required("Please input icon"),
 });
 
-const useAddEventModal = () => {
+const useAddCategoryModal = () => {
   const { setToaster } = useContext(ToasterContext);
   const {
     isPendingMutateUploadFile,
@@ -108,4 +108,4 @@ const useAddEventModal = () => {
   };
 };
 
-export default useAddEventModal;
+export default useAddCategoryModal;
