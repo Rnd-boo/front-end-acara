@@ -1,4 +1,5 @@
 import { DateValue } from "@nextui-org/react";
+import { StringDecoder } from "string_decoder";
 
 interface IRegency {
   id: string;

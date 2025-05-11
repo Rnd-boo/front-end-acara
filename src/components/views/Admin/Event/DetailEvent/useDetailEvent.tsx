@@ -17,7 +17,7 @@ const useDetailEvent = () => {
 
   const { data: dataEvent, refetch: refetchEvent } = useQuery({
     queryKey: ["Event"],
-    queryFn: () => getEventById,
+    queryFn: getEventById,
     enabled: isReady,
   });
 
