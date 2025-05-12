@@ -2,6 +2,7 @@ import { ToasterContext } from "@/contexts/ToasterContext";
 import eventServices from "@/services/event.service";
 import { IEvent, IEventForm } from "@/types/Event";
 import { toDateStandard } from "@/utils/date";
+import { DateValue } from "@nextui-org/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useContext } from "react";
@@ -52,15 +53,15 @@ const useDetailEvent = () => {
   const handleUpdateInfo = (data: IEventForm) => {
     const payload = {
       ...data,
-      startDate: data.startDate ? toDateStandard(data.startDate) : "",
-      endDate: data.endDate ? toDateStandard(data.endDate) : "",
+      startDate: toDateStandard(data.startDate as DateValue),
+      endDate: toDateStandard(data.endDate as DateValue),
     };
     mutateUpdateEvent(payload);
   };
 
   const handleUpdateLocation = (data: IEventForm) => {
     const payload = {
-      isOnline: Boolean(data.isOnline),
+      ...data,
       location: {
         address: `${data.address}`,
         region: `${data.region}`,
