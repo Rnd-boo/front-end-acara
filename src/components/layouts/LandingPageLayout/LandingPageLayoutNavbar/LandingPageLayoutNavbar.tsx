@@ -139,7 +139,7 @@ const LandingPageLayoutNavbar = () => {
                 <Link href="/admin/dashboard">Admin</Link>
               </NavbarMenuItem>
               <NavbarMenuItem className="font-medium text-default-700 hover:text-danger">
-                <Link href="/member/profile">Admin</Link>
+                <Link href="/member/profile">Profile</Link>
               </NavbarMenuItem>
               <NavbarMenuItem>
                 <Button
