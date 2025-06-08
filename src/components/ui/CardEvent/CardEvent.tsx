@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 interface PropTypes {
-  className: string;
+  className?: string;
   event?: IEvent;
   isLoading?: boolean;
   key?: string;
