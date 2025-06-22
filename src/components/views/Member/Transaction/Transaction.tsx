@@ -34,7 +34,7 @@ const Banner = () => {
         case "status":
           return (
             <Chip
-              color={cellValue ? "success" : "warning"}
+              color={cellValue === "completed" ? "success" : "warning"}
               size="sm"
               variant="flat"
             >
@@ -47,7 +47,7 @@ const Banner = () => {
           return (
             <DropdownAction
               onPressButtonDetail={() =>
-                push(`/member/transaction/${transaction._id}`)
+                push(`/member/transaction/${transaction?.orderId}`)
               }
               hideButtonDelete
             />
